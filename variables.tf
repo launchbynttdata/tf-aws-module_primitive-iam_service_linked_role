@@ -22,6 +22,16 @@ variable "aws_service_name" {
     condition     = length(var.aws_service_name) > 0
     error_message = "AWS service name must not be empty."
   }
+
+  validation {
+    condition     = !startswith(var.aws_service_name, "http://") && !startswith(var.aws_service_name, "https://")
+    error_message = "AWS service name must not start with http:// or https://."
+  }
+
+  validation {
+    condition     = endswith(var.aws_service_name, ".amazonaws.com")
+    error_message = "AWS service name must end with .amazonaws.com."
+  }
 }
 
 variable "custom_suffix" {
