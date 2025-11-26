@@ -1,46 +1,38 @@
-# ECS Task Definition Module Examples
+# IAM Service Linked Role Module Examples
 
-This directory contains comprehensive examples demonstrating the capabilities of the ECS task definition module. Each example showcases different use cases and configuration patterns.
+This directory contains comprehensive examples demonstrating the capabilities of the IAM service linked role module. Each example showcases different use cases and configuration patterns.
 
 ## Available Examples
 
 ### 1. [Complete](./complete/)
-**Comprehensive ECS task definition with all features**
-- FARGATE launch type configuration
-- Container definitions with multiple settings
-- ECS execution role and task role setup
-- Ephemeral storage configuration
-- Runtime platform specification
-- Volume configuration (host, Docker, EFS)
-- Placement constraints
-- CloudWatch logging integration
-- Sample IAM policies for containers
+**Comprehensive IAM service linked role with all features**
+- Service-linked role creation for AWS services
+- Custom suffix and description configuration
+- Tagging for resource organization
+- Role existence checking and management
+- Sample configurations for common AWS services
 
 ## Features Demonstrated
 
 ### Core Module Features
-- ✅ **Family naming**: Task definition family and versioning
-- ✅ **Launch types**: FARGATE and EC2 compatibility
-- ✅ **Network modes**: awsvpc configuration for Fargate
-- ✅ **CPU and memory**: Resource allocation
-- ✅ **IAM roles**: Execution role and task role setup
-- ✅ **Container definitions**: Container configuration and settings
-- ✅ **Ephemeral storage**: Temporary storage allocation
+- ✅ **Service name specification**: AWS service for the role
+- ✅ **Custom suffix**: Optional suffix for role naming
+- ✅ **Description**: Role description configuration
+- ✅ **Tagging**: Resource tagging support
+- ✅ **Role existence**: Check if role already exists
 
 ### Advanced Features
-- ✅ **Runtime platform**: Operating system and CPU architecture selection
-- ✅ **Placement constraints**: Constraint-based task placement
-- ✅ **Volumes**: EFS, Docker, and host path volumes
-- ✅ **Proxy configuration**: App Mesh integration support
-- ✅ **IPC and PID modes**: Namespace configuration
-- ✅ **Fault injection**: AWS Resilience Hub integration
-- ✅ **Tags**: Comprehensive tagging for resource organization
+- ✅ **ARN and ID outputs**: Role identification and referencing
+- ✅ **Creation date**: Role creation timestamp tracking
+- ✅ **Unique ID**: Stable role identifier
+- ✅ **Path**: Role path information
+- ✅ **Tags inheritance**: Provider-level tag inheritance
 
 ### IAM Integration
-- ✅ **Task execution role**: Pull images and CloudWatch logs
-- ✅ **Task role**: Container application permissions
-- ✅ **Inline policies**: Custom permissions for containers
-- ✅ **AWS managed policies**: Standard role policies
+- ✅ **Service-linked roles**: AWS-managed roles for services
+- ✅ **Automatic creation**: Creates role if it doesn't exist
+- ✅ **Existing role detection**: Avoids duplicate role creation
+- ✅ **Standard naming**: Follows AWS service-linked role conventions
 
 ## Running the Examples
 
@@ -49,7 +41,7 @@ Each example includes:
 - `variables.tf`: Configurable parameters with defaults
 - `outputs.tf`: Useful outputs for integration
 - `versions.tf`: Provider requirements
-- `terraform.tfvars`: Example variable values
+- `test.tfvars`: Example variable values
 
 ### Quick Start
 
@@ -83,11 +75,9 @@ terraform validate
 
 The complete example provides comprehensive coverage:
 
-- **Core ECS task definition** functionality
-- **FARGATE** launch type configuration
-- **IAM role** setup and permissions
-- **Container definitions** with multiple configurations
-- **Volume management** (host, Docker, EFS)
-- **Runtime platform** customization
-- **Logging and monitoring** integration
-- **Best practices** for production deployments
+- **Core IAM service linked role** functionality
+- **Service-specific roles** (ECS example included)
+- **Optional configurations** (suffix, description, tags)
+- **Role management** (existence checking and creation)
+- **Output values** for integration and automation
+- **Best practices** for IAM role deployments

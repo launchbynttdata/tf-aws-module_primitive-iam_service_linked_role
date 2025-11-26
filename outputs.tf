@@ -53,4 +53,3 @@ output "role_exists" {
   description = "Whether the role already existed or was created by this module."
   value       = local.role_exists
 }
-
