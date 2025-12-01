@@ -40,7 +40,7 @@ func TestComposableComplete(t *testing.T, ctx lcafTypes.TestContext) {
 	roleExists := roleExistsStr == "true"
 
 	t.Run("TestIAMServiceLinkedRoleExists", func(t *testing.T) {
-		testIAMServiceLinkedRoleExists(t, iamClient, roleArn, roleName, roleId)
+		testIAMServiceLinkedRoleExists(t, iamClient, roleArn, roleName, roleId, roleExists)
 	})
 
 	t.Run("TestIAMServiceLinkedRoleProperties", func(t *testing.T) {
@@ -56,7 +56,10 @@ func TestComposableComplete(t *testing.T, ctx lcafTypes.TestContext) {
 	}
 }
 
-func testIAMServiceLinkedRoleExists(t *testing.T, iamClient *iam.Client, roleArn, roleName, roleId string) {
+func testIAMServiceLinkedRoleExists(t *testing.T, iamClient *iam.Client, roleArn, roleName, roleId string, roleExists bool) {
+	// Ensure the Terraform output indicates the role should exist
+	require.True(t, roleExists, "Expected Terraform output `role_exists` to be true")
+
 	roleOutput, err := iamClient.GetRole(context.TODO(), &iam.GetRoleInput{
 		RoleName: aws.String(roleName),
 	})
