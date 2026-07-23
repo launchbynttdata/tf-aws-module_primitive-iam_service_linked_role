@@ -30,7 +30,22 @@ const (
 	failedToGetRoleTagsMsg = "Failed to list IAM role tags"
 )
 
+// TestComposableComplete is the functional entrypoint's implementation
+// function, run via lib.RunSetupTestTeardown (apply -> test -> destroy).
 func TestComposableComplete(t *testing.T, ctx lcafTypes.TestContext) {
+	runIAMServiceLinkedRoleChecks(t, ctx)
+}
+
+// TestComposableCompleteReadOnly is the readonly entrypoint's implementation
+// function. lcaf-component-terratest requires readonly implementation
+// functions to be named with a TestComposable prefix, and it is run via
+// lib.RunNonDestructiveTest against already-deployed infrastructure. It
+// performs the same read-only assertions as the functional suite.
+func TestComposableCompleteReadOnly(t *testing.T, ctx lcafTypes.TestContext) {
+	runIAMServiceLinkedRoleChecks(t, ctx)
+}
+
+func runIAMServiceLinkedRoleChecks(t *testing.T, ctx lcafTypes.TestContext) {
 	iamClient := GetAWSIAMClient(t)
 
 	roleArn := terraform.Output(t, ctx.TerratestTerraformOptions(), "role_arn")
