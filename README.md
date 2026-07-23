@@ -8,12 +8,6 @@
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | ~> 1.5 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 5.0 |
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 5.100.0 |
-
 ## Modules
 
 No modules.
@@ -39,12 +33,12 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_id"></a> [id](#output\_id) | The Amazon Resource Name (ARN) of the role. |
 | <a name="output_arn"></a> [arn](#output\_arn) | The Amazon Resource Name (ARN) specifying the role. |
 | <a name="output_create_date"></a> [create\_date](#output\_create\_date) | The creation date of the IAM role. |
+| <a name="output_id"></a> [id](#output\_id) | The Amazon Resource Name (ARN) of the role. |
 | <a name="output_name"></a> [name](#output\_name) | The name of the role. |
 | <a name="output_path"></a> [path](#output\_path) | The path of the role. |
-| <a name="output_unique_id"></a> [unique\_id](#output\_unique\_id) | The stable and unique string identifying the role. |
-| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
 | <a name="output_role_exists"></a> [role\_exists](#output\_role\_exists) | Whether the role already existed or was created by this module. |
+| <a name="output_tags_all"></a> [tags\_all](#output\_tags\_all) | A map of tags assigned to the resource, including those inherited from the provider default\_tags configuration block. |
+| <a name="output_unique_id"></a> [unique\_id](#output\_unique\_id) | The stable and unique string identifying the role. |
 <!-- END_TF_DOCS -->
