@@ -48,10 +48,10 @@ func TestComposableCompleteReadOnly(t *testing.T, ctx lcafTypes.TestContext) {
 func runIAMServiceLinkedRoleChecks(t *testing.T, ctx lcafTypes.TestContext) {
 	iamClient := GetAWSIAMClient(t)
 
-	roleArn := terraform.Output(t, ctx.TerratestTerraformOptions(), "role_arn")
-	roleName := terraform.Output(t, ctx.TerratestTerraformOptions(), "role_name")
-	roleId := terraform.Output(t, ctx.TerratestTerraformOptions(), "role_id")
-	roleExistsStr := terraform.Output(t, ctx.TerratestTerraformOptions(), "role_exists")
+	roleArn := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "role_arn")
+	roleName := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "role_name")
+	roleId := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "role_id")
+	roleExistsStr := terraform.OutputContext(t, context.Background(), ctx.TerratestTerraformOptions(), "role_exists")
 	roleExists := roleExistsStr == "true"
 
 	t.Run("TestIAMServiceLinkedRoleExists", func(t *testing.T) {
@@ -65,7 +65,7 @@ func runIAMServiceLinkedRoleChecks(t *testing.T, ctx lcafTypes.TestContext) {
 	if !roleExists {
 		t.Run("TestIAMServiceLinkedRoleTags", func(t *testing.T) {
 			var roleTags map[string]interface{}
-			terraform.OutputStruct(t, ctx.TerratestTerraformOptions(), "role_tags_all", &roleTags)
+			terraform.OutputStructContext(t, context.Background(), ctx.TerratestTerraformOptions(), "role_tags_all", &roleTags)
 			testIAMServiceLinkedRoleTags(t, iamClient, roleName, roleTags)
 		})
 	}
